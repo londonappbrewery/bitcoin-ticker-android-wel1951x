@@ -1,4 +1,4 @@
-package com.londonappbrewery.bitcointicker;
+package com.tahoesoftware.bitcointicker;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
