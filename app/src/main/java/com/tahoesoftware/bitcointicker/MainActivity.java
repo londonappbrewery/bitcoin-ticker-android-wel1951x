@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity
     // Member Variables:
     TextView mPriceTextView;
 
-    String useCurrency = "AUD";
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
         {
@@ -61,13 +59,12 @@ public class MainActivity extends AppCompatActivity
                                        int position,
                                        long id)
                 {
-                useCurrency = (String) adapterView.getItemAtPosition(position);
 /*
                 Log.d("Bitcoin", "" + adapterView.getItemAtPosition(position));
                 String callURL = BASE_URL + adapterView.getItemAtPosition(position);
                 Log.d("Bitcoin", "" + callURL);
 */
-                accessNetwork(BASE_URL + useCurrency);
+                accessNetwork(BASE_URL + adapterView.getItemAtPosition(position));
                 }
 
             @Override
@@ -94,8 +91,7 @@ public class MainActivity extends AppCompatActivity
                 Log.d("Bitcoin", "JSON: " + response.toString());
                 try
                     {
-                    double lastPrice = response.getDouble("last");
-                    mPriceTextView.setText(Integer.toString((int) lastPrice));
+                    mPriceTextView.setText(response.getString("last"));
                     }
                 catch (JSONException e)
                     {
